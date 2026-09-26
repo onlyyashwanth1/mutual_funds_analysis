@@ -1,0 +1,9 @@
+# Exclude raw data if too large for GitHub
+# MutualFunds.csv
+# ETFs.csv
+
+__pycache__/
+*.pyc
+.DS_Store
+data/raw/
+venv/
