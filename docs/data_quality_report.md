@@ -81,6 +81,30 @@ stated plainly in that phase's write-up rather than glossed over.
 
 ---
 
+
+
+## 8. Row counts represent fund records, not distinct fund companies
+The 23,783 mutual fund rows are **not** 23,783 distinct fund products. US
+regulatory data (ICI, 2024) puts the actual number of mutual funds
+domiciled in the US at roughly 7,000. The gap is explained by **share
+classes**: many fund companies sell the same underlying portfolio under
+several share classes (e.g. Investor, Admiral/Institutional, or Class
+A/B/C for load structure), each with its own fee, minimum investment, and
+ticker — and each gets its own row in this dataset.
+
+This is not a data error and no rows were removed for it. Different share
+classes of the same fund genuinely do carry different expense ratios, so
+keeping them as separate records is correct for the fee-vs-performance
+analysis. It does mean "23,783 mutual funds" should be read as "23,783
+fund/share-class records," not as 23,783 unrelated companies.
+
+**Decision for later phases:** no change to existing queries — this is a
+documentation note, not a cleaning step. Worth stating plainly if asked in
+review, since the raw row count alone overstates how many distinct fund
+products actually exist.
+
+---
+
 ## Summary of decisions carried into later phases
 - Merge "First Sentier" / "First Sentier Investors" into one fund family
 - Exclude the 663 uncategorized funds from category comparisons
